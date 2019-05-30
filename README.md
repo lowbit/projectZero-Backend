@@ -1,0 +1,1 @@
+Backend code in Node.JS with Express framework and Sequlize ORM.
