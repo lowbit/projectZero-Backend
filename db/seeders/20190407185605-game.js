@@ -2,7 +2,8 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Game', [{
+    return queryInterface.bulkInsert('Games', [{
+      id:'1',
       title:'Apex Legends',
       description:'Apex Legends is a battle royale game based in the Titanfall universe that\'s defined by squad battles emphasizing teamwork and use of a unique pinging system.',
       releaseDate:'2019-02-04',
