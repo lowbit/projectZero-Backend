@@ -1,4 +1,3 @@
-
 const Game = require ('../../db').Game;
 
 module.exports = app => {

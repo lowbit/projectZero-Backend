@@ -1,4 +1,3 @@
-const jwtSecret = require('./jwtConfig');
 const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize');
 
@@ -95,7 +94,7 @@ passport.use(
 
 const opts = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
-    secretOrKey: jwtSecret.secret,
+    secretOrKey: `${process.env.JWT_SECRET}`,
 };
 
 passport.use(
