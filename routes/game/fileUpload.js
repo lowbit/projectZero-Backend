@@ -8,25 +8,46 @@ module.exports = (app) => {
         var extension = file.match(regexp);
         return extension && extension[1];
       }
+    function getFullDateString(){
+      let today = new Date();
+      let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      let time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+      return date+'T'+time;
+    }
     app.post('/uploadImg', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
             if (!req.files || Object.keys(req.files).length === 0) {
                 return res.status(400).send({auth:true, message:'No files were uploaded.'});
             }
-            
-            let filePath = path.resolve(__dirname, '..', '..')+'/public/games/'+req.body.id;
-            try {
-                if (!fs.existsSync(filePath)){
-                  fs.mkdirSync(filePath)
-                }
-              } catch (err) {
-                console.error(err)
+            let validExtension = false;
+            ["png","jpg","jpeg","gif"].forEach(ext=>{
+              if(ext===getFileExtension(req.files.file.name)){
+                validExtension = true;
               }
-            let file = req.files.file;
-            file.name= req.body.id+getFileExtension(req.files.file.name);
-            file.mv(filePath, function(err) {//fix this
-                if(err){
-                    return res.status(500).send({auth:true, message:err})
-                }
             })
+            if(validExtension){
+              let filePath = path.normalize(path.resolve(__dirname, '..', '..')+'/public/games/'+req.body.title+'/');
+              try {
+                  if (!fs.existsSync(filePath)){
+                    fs.mkdirSync(filePath)
+                  }
+                } catch (err) {
+                  console.error(err)
+                }
+              let file = req.files.file;
+              file.name= req.body.title+'Cover'+getFullDateString()+'.'+getFileExtension(req.files.file.name);
+              filePath += file.name;
+
+              let relativeFilePath = path.normalize('/games/'+req.body.title+'/'+file.name);
+              file.mv(filePath, function(err) {
+                  if(err){
+                      return res.status(500).send({auth:true, message:err})
+                  } else {
+                    res.status(200).send({auth:true, imgPath:relativeFilePath});
+                  }
+              })
+          }
+          else {
+            return res.status(400).send({auth:true, message:'Uploaded file type not allowed.'});
+          }
         });
 }

@@ -1,0 +1,51 @@
+-- On Page Start
+
+preinitializeHandler
+nista sepcijalno
+
+init
+this.currentState = LoginPage
+   => setupN2BChannels
+   postavi channel (authenticated	false)
+postavi contextMenu (default flash komande, clipboard menu true i 2 custom itema)
+    => recalculateRealBrowserWidth nebitno
+    => calculateZoom nebitno
+seta number formatter
+    => getAllLangugaes pokrene api za getanje jezika
+nulira usera
+ 
+appCreationCompleteHandler
+
+getDBSetupInfo_resultHandler
+seta retries na 3
+
+getAllResult_resultHandler
+Vrati languages AR i EN
+
+-- On Login Enter
+
+_signIn_clickHandler
+seta enkriptovano podatke od usera i password i posalje ih
+
+validateData
+seta dobivene podatke od usera
+    =>validatePassword
+        =>N2BUNITUTILS.decrypt
+
+    => deleteFromDict
+
+N2BSingleton postavlja usera team, role
+
+logSeqnoResult
+
+
+getRSN2BList_resultHandle
+
+initlocalConnection
+
+marketSegment_resultHandler postavi segment code
+
+
+getLastLoginDate_resultHandler za cache provjeru ali je nema na vivi
+
+getUsersNameResultHandler za decode usera

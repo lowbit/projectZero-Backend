@@ -32,6 +32,7 @@ require('./routes/user/updateUser')(app);
 require('./routes/game/getGames')(app);
 require('./routes/game/getGame')(app);
 require('./routes/game/updateGame')(app);
+require('./routes/game/insertGame')(app);
 require('./routes/game/fileUpload')(app);
 
 app.listen(API_PORT, () => {
