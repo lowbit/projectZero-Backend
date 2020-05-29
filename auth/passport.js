@@ -7,7 +7,7 @@ const Op = Sequelize.Op;
 
 const passport = require('passport'),
     localStrategy = require('passport-local').Strategy,
-    User = require ('../db').User;
+    User = require ('../db/db').User;
     JWTstrategy = require('passport-jwt').Strategy,
     ExtractJWT = require('passport-jwt').ExtractJwt;
 

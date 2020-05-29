@@ -1,4 +1,4 @@
-const User = require ('../../db').User;
+const User = require ('../../db/db').User;
 const passport = require('passport');
 
 module.exports = app => {

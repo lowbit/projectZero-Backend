@@ -1,4 +1,4 @@
-const Game = require ('../../db').Game;
+const Game = require ('../../db/db').Game;
 
 module.exports = app => {
     app.get('/getGame/:id',(req,res,next)=>{

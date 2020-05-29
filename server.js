@@ -34,6 +34,11 @@ require('./routes/game/getGame')(app);
 require('./routes/game/updateGame')(app);
 require('./routes/game/insertGame')(app);
 require('./routes/game/fileUpload')(app);
+require('./routes/game/deleteGame')(app);
+
+require('./routes/tierlist/getTierList')(app);
+require('./routes/tierlist/addTierList')(app);
+require('./routes/tierlist/updateTierList')(app);
 
 app.listen(API_PORT, () => {
     console.log(`Listening on ${API_ADDRESS}:${API_PORT}`);

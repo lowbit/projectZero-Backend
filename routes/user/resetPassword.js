@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 const Sequelize = require('sequelize');
-const User = require ('../../db').User;
+const User = require ('../../db/db').User;
 
 // eslint-disable-next-line prefer-destructuring
 const Op = Sequelize.Op;

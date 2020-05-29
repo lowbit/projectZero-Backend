@@ -1,5 +1,5 @@
 const passport = require('passport');
-const Game = require('../../db').Game;
+const Game = require('../../db/db').Game;
 
 module.exports = (app) => {
     app.post('/addGame', passport.authenticate('jwt', {session: false}), (req, res, next) =>{

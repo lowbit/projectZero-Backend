@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 const crypto = require('crypto');
-const User = require ('../../db').User;
+const User = require ('../../db/db').User;
 const nodemailer = require('nodemailer');
 
 require('dotenv').config();

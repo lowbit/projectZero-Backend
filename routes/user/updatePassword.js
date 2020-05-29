@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const passport = require('passport');
 const bcrypt = require('bcrypt');
-const User = require ('../../db').User;
+const User = require ('../../db/db').User;
 
 const BCRYPT_SALT_ROUNDS = 12;
 module.exports = (app) => {

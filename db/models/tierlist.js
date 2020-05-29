@@ -1,20 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Game = sequelize.define('Game', {
+  const TierList = sequelize.define('TierList', {
     id: {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.INTEGER,
-      autoIncrement: true
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
-    description: DataTypes.STRING,
-    releaseDate: DataTypes.DATE,
-    imgPath: DataTypes.STRING
+    imgPath: DataTypes.STRING,
+    additionalInfo: DataTypes.STRING
   }, {});
-  return Game;
+  return TierList;
 };

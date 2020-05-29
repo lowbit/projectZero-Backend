@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const passport = require('passport');
-const User = require ('../../db').User;
+const User = require ('../../db/db').User;
 
 module.exports = (app) => {
   app.put('/updateUser', (req, res, next) => {

@@ -14,8 +14,5 @@ module.exports = (sequelize, DataTypes) => {
     resetPasswordToken: DataTypes.STRING,
     resetPasswordExpires: DataTypes.DATE
   }, {});
-  User.associate = function(models) {
-    // associations can be defined here
-  };
   return User;
 };
