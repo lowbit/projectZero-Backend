@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const Sequelize = require('sequelize');
 const User = require ('../../db/db').User;
 

@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const Sequelize = require('sequelize');
 
 const BCRYPT_SALT_ROUNDS = 12;
