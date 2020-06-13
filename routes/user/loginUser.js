@@ -22,7 +22,7 @@ module.exports = app => {
                             username: user.username,
                         },
                     }).then(user => {
-                        const token = jwt.sign({id: user.username}, `${process.env.JWT_SECRET}`);
+                        const token = jwt.sign({id: user.username, role: user.role}, `${process.env.JWT_SECRET}`);
                         res.status(200).send ({
                             auth:true,
                             token: token,

@@ -33,7 +33,7 @@ db.TierListItem = TierListItemModel(sequelize, Sequelize);
 db.TierList.hasMany(db.TierListItem);
 db.TierList.belongsTo(db.Game);
 
-db.sequelize.sync()
+db.sequelize.sync()//{force:true}
 .then().catch(err => {
  console.log(err);
 });

@@ -1,9 +1,10 @@
 const passport = require('passport');
 const Game = require('../../db/db').Game;
+const {roleCheck} = require('../../auth/authRole');
 
 module.exports = (app) => {
     app.post('/addGame', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
-           if(req.body && req.body.game){
+        if(roleCheck(req, res, next, ['admin','moderator']) && req.body && req.body.game){
                 let game = req.body.game;
                 let valid = true;
                 let failedReason = '';
@@ -29,10 +30,9 @@ module.exports = (app) => {
                     }).catch((error) => {
                         res.status(400).send({auth:true, message:'Invalid request', error:error});
                     });
-            }
-            }
-            else {
-                res.status(400).send({auth:true, message:'Invalid request'});
+                }
+            } else {
+                res.headersSent?false:res.status(400).send({auth:true, message:'Invalid request'});
             }
         });
 }
