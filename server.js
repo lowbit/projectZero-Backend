@@ -43,5 +43,14 @@ require('./routes/tierlist/updateTierList')(app);
 app.listen(API_PORT, () => {
     console.log(`Listening on ${API_ADDRESS}:${API_PORT}`);
 });
+//Default error handling
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+      error: {
+          message: error.message
+      }
+  });
+});
 
 module.exports = app;
